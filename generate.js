@@ -3,10 +3,10 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 
-const ZHIPU_API_KEY = process.env.ZHIPU_API_KEY;
-const ZHIPU_API_BASE = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
+const NVIDIA_API_BASE = "https://integrate.api.nvidia.com/v1/chat/completions";
 const DAYS_BACK = parseInt(process.env.DAYS_BACK || "7", 10);
-const MAX_TOKENS = 50000;
+const MAX_TOKENS = 16384;
 const TIMEOUT_MS = 480000;
 
 const SEARCH_QUERIES = [
@@ -32,7 +32,7 @@ const SEARCH_QUERIES = [
   },
 ];
 
-const FALLBACK_MODELS = ["glm-5-turbo", "glm-4.7", "glm-4.7-flash"];
+const FALLBACK_MODELS = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
@@ -93,23 +93,29 @@ async function fetchPubMedDetails(ids) {
   });
 }
 
-function callZhipuAPI(messages) {
+function callNvidiaAPI(messages) {
   return new Promise((resolve, reject) => {
     const postData = JSON.stringify({
-      model: "glm-5-turbo",
+      model: FALLBACK_MODELS[0],
       messages,
       max_tokens: MAX_TOKENS,
-      temperature: 0.3,
+      temperature: 1.0,
+      top_p: 0.95,
+      stream: false,
+      chat_template_kwargs: { enable_thinking: false },
     });
 
-    const urlObj = new URL(ZHIPU_API_BASE);
+    const urlObj = new URL(NVIDIA_API_BASE);
 
     for (const model of FALLBACK_MODELS) {
       const body = JSON.stringify({
         model,
         messages,
         max_tokens: MAX_TOKENS,
-        temperature: 0.3,
+        temperature: 1.0,
+        top_p: 0.95,
+        stream: false,
+        chat_template_kwargs: { enable_thinking: false },
       });
 
       const options = {
@@ -119,7 +125,7 @@ function callZhipuAPI(messages) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${ZHIPU_API_KEY}`,
+          Authorization: `Bearer ${NVIDIA_API_KEY}`,
         },
         timeout: TIMEOUT_MS,
       };
@@ -160,7 +166,7 @@ function callZhipuAPI(messages) {
   });
 }
 
-function callZhipuWithFallback(messages) {
+function callNvidiaWithFallback(messages) {
   return new Promise((resolve, reject) => {
     let modelIndex = 0;
 
@@ -175,10 +181,13 @@ function callZhipuWithFallback(messages) {
         model,
         messages,
         max_tokens: MAX_TOKENS,
-        temperature: 0.3,
+        temperature: 1.0,
+        top_p: 0.95,
+        stream: false,
+        chat_template_kwargs: { enable_thinking: false },
       });
 
-      const urlObj = new URL(ZHIPU_API_BASE);
+      const urlObj = new URL(NVIDIA_API_BASE);
       const options = {
         hostname: urlObj.hostname,
         port: 443,
@@ -186,7 +195,7 @@ function callZhipuWithFallback(messages) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${ZHIPU_API_KEY}`,
+          Authorization: `Bearer ${NVIDIA_API_KEY}`,
           "Content-Length": Buffer.byteLength(body),
         },
       };
@@ -357,13 +366,13 @@ function generateDailyHTML(dateStr, taiwanDate, data) {
     const keywords = data.keywords || [];
     keywordsHtml = keywords.map((k) => `<span class="keyword">${escapeHtml(k)}</span>`).join("");
 
-    const modelUsed = data.model_used || "glm-5-turbo";
+    const modelUsed = data.model_used || FALLBACK_MODELS[0];
   } catch (e) {
     console.error("Error generating HTML sections:", e.message);
   }
 
   const totalArticles = (data.top_picks?.length || 0) + (data.other_articles?.length || 0);
-  const modelUsed = data.model_used || "glm-5-turbo";
+  const modelUsed = data.model_used || FALLBACK_MODELS[0];
 
   return `<!DOCTYPE html>
 <html lang="zh-TW">
@@ -448,7 +457,7 @@ function generateDailyHTML(dateStr, taiwanDate, data) {
       <div class="header-meta">
         <span class="badge badge-date">📅 ${safeTaiwanDate}</span>
         <span class="badge badge-count">📊 ${totalArticles} 篇文獻</span>
-        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
       </div>
     </div>
   </header>
@@ -540,7 +549,7 @@ function generateIndexHTML(existingFiles) {
   <p class="count">共 ${existingFiles.filter((f) => f.startsWith("gad-")).length} 期日報</p>
   <ul>${items}</ul>
   <footer>
-    <p>Powered by PubMed + Zhipu AI · <a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a></p>
+<p>Powered by PubMed + NVIDIA AI · <a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a></p>
     <p style="margin-top:8px"><a href="https://www.leepsyclinic.com/" target="_blank">李政洋身心診所</a> · <a href="https://blog.leepsyclinic.com/" target="_blank">訂閱電子報</a> · <a href="https://buymeacoffee.com/CYlee" target="_blank">☕ Buy me a coffee</a></p>
   </footer>
 </div>
@@ -552,8 +561,8 @@ async function main() {
   console.log("=== GAD Research Daily Generator ===");
   console.log(`Days back: ${DAYS_BACK}`);
 
-  if (!ZHIPU_API_KEY) {
-    console.error("ERROR: ZHIPU_API_KEY environment variable is required");
+  if (!NVIDIA_API_KEY) {
+    console.error("ERROR: NVIDIA_API_KEY environment variable is required");
     process.exit(1);
   }
 
@@ -648,10 +657,10 @@ ${articlesText}
 
 請分析這些文獻，按指定 JSON 格式回覆。`;
 
-  console.log("Calling Zhipu AI for analysis...");
+  console.log("Calling NVIDIA AI for analysis...");
   let aiResult;
   try {
-    aiResult = await callZhipuWithFallback([
+    aiResult = await callNvidiaWithFallback([
       { role: "system", content: systemPrompt },
       { role: "user", content: userPrompt },
     ]);
@@ -692,7 +701,7 @@ ${articlesText}
     };
   }
 
-  const usedModel = aiResult.model || "glm-5-turbo";
+  const usedModel = aiResult.model || FALLBACK_MODELS[0];
   parsed.model_used = usedModel;
 
   const docsDir = path.join(process.cwd(), "docs");
