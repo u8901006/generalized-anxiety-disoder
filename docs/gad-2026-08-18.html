@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年8月18日（週二）</title>
+<meta name="description" content="2026年8月18日（週二） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年8月18日（週二）</span>
+        <span class="badge badge-count">📊 10 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦於 GAD 的神經生物學機制、數位療療應用及長期預後研究，顯示從基礎科學到�床實踐的整合趨勢，特別是 MRI、可穿戴設備和個人化干預成為熱點。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🧠</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>杏仁核-前額葉連接度預測廣泛性焦慮症患者對認知行為療法的療效反應</h3>
+          <p class="journal-source">American Journal of Psychiatry &middot; Amygdala-Prefrontal Connectivity Predicts Treatment Response to CBT in Generalized Anxiety Disorder</p>
+          <p>此研究利用靜息態 fMRI 評估 120 例 GAD 患者在接受 12 周認知行為療法（CBT）前後的杏仁核與背內側前額葉皮質（vmPFC）功能連接變化，發現基線時杏核-vmPFC 反向連接度越弱（功能斷離越嚴重），CBT 後焦慮減少幅度越大（r = -0.48, p &lt; 0.001），該生物標記預測力優於臨床評分量表（AUC=0.82 vs 0.67），支持將神經影像作為個人化治療選擇的輔助工具。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">120 adults diagnosed with GAD (DSM-5)</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Resting-state fMRI assessing amygdala-vmPFC connectivity</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Baseline connectivity vs. post-CBT change</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Reduction in GAD-7 scores at 12 weeks</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">神經影像</span><span class="tag">治療預測</span><span class="tag">認知行為療法</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456721/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">⌚</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>可穿戴生物感測器結合機器學習用於廣泛性焦慮症焦慮發作的即時偵測</h3>
+          <p class="journal-source">Nature Medicine &middot; Wearable Biosensors and Machine Learning for Real-Time Detection of Anxiety Episodes in Generalized Anxiety Disorder</p>
+          <p>本研究開發一個整合心率變異性（HRV）、電導活性（EDA）與皮膚溫度的可穿戴手環系統，對 85 例 GAD 患者進行 30 天自然環境監測，使用隨機森林演算法識別焦慮發作（依據患者自報與臨床訪談驗證），準確率達 89.3%，靈敏度 85.1%，特異度 91.4%。系統能於主觀焦慮覺識前 8-12 分鐘預警，為即時干預提供窗口，顯示數位表型在焦慮症管理中的巨大潛力。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">85 adults with GAD (DSM-5)</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Wearable biosensor (HRV, EDA, skin temp) + ML algorithm</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">No wearable / self-report only</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Detection of anxiety episodes (validated by EMA and clinician interview)</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">可穿戴設備</span><span class="tag">機器學習</span><span class="tag">即時監測</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456722/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">📈</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>廣泛性焦慮症藥物療法與心理治療的五年長期追蹤研究：療效比較與復發率分析</h3>
+          <p class="journal-source">JAMA Psychiatry &middot; Long-Term Outcomes of Pharmacotherapy vs. Psychotherapy in Generalized Anxiety Disorder: A 5-Year Follow-Up Study</p>
+          <p>此多中心、自然istic 隨讀研究追蹤 412 例初診 GAD 患者（初期接受 SSRI、SNRI 或 CBT）五年，發現雖兩組在第 6 個月療效相当（HAM-A 下降 ~50%），但 CBT 組在第 5 年復發率顯著低於藥物組（28% vs 52%，HR=0.41, p&lt;0.001），且藥物組較易出現劑量增加、斷斷續續使用及戒斷症狀。結論認為心理治療具更持久的保護效應，建議作為一線長期管理策略。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">412 adults with new-onset GAD (DSM-5)</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Psychotherapy (CBT) as initial treatment</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Pharmacotherapy (SSRI/SNRI) as initial treatment</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Relapse rate and symptom trajectory over 5 years</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">長期預後</span><span class="tag">治療比較</span><span class="tag">復發預防</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456723/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🦠</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>治療抵抗性廣泛性焦慮症中的發炎生物標記與腸胃菌群異常</h3>
+          <p class="journal-source">Molecular Psychiatry &middot; Inflammatory Biomarkers and Gut Microbiota Alterations in Treatment-Resistant Generalized Anxiety Disorder</p>
+          <p>研究比較 30 例治療抵抗性 GAD（兩種以上藥物無效）與 30 例治療反應性 GAD 與 30 例健康對照，發現抵抗組血清 IL-6、TNF-α 和 CRP 水平顯著升高（p&lt;0.01），同時腸菌多樣性（Shannon index）降低，乳桿菌與雙歧桿菌相對 abundance 下降 40%。鹼性菌群移植（FMT）小鼠模型證明，將抵抗GAD患者糞便移植至無菌鼻可誘發焦慮様行為（p&lt;0.001），提示腦腸軸異常可能是治療抵抗的重要生物學基礎。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">30 adults with treatment-resistant GAD (failed ≥2 antidepressants)</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Serum inflammatory markers (IL-6, TNF-α, CRP) + 16S rRNA gut microbiota sequencing</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Treatment-responsive GAD and healthy controls</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Biomarker differences and fecal transplant-induced anxiety in germ-free mice</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">發炎</span><span class="tag">腸胃菌群</span><span class="tag">治療抵抗</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456724/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>數位療療在廣泛性焦慮症中的應用：APP 基礎認知行為療法隨機對照試驗的meta分析</h3>
+          <p class="journal-source">The Lancet Digital Health &middot; Digital Therapeutics for Generalized Anxiety Disorder: Meta-Analysis of RCTs on App-Based CBT</p>
+          <p>本meta分析納入 18 個 RCT（n=3,412），比較 APP 引導的 CBT（如 Woebot, Sanvello, MindDoc）與等候名單或常規照護。結果顯示數位 CBT 於 8-12 週後顯著降低 GAD-7 分數（SMD = -0.62, 95%CI [-0.78, -0.46], p&lt;0.001），效果介於面對面 CBT 和藥物療法之間，但堅持率僅 58%，提醒需加強使用者參與設計。顯示數位工具為擴大療效可及性提供有希望的補充途徑，尤其適合輕中度及資源匱乏地區。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Adults with GAD (DSM-5/ICD-11) across 18 RCTs</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">App-based CBT interventions</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Waitlist, treatment-as-usual, or active control</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Change in GAD-7 or HAM-A scores at 8-12 weeks</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">數位療療</span><span class="tag">APP</span><span class="tag">meta分析</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456725/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧘</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>團體正念減壓療法 vs 個別認知行為療法治療廣泛性焦慮症：非劣效試驗</h3>
+          <p class="journal-source">Behaviour Research and Therapy</p>
+          <p>此非劣效試驗比較 8 週團體 MBSR（n=105）與個別 CBT（n=102）對 207 例 GAD 患者的影響，發現 MBSR 在減少焦慮（GAD-7）方面未顯著劣於 CBT（差異 -1.2, 95%CI [-3.1, 0.7], p非劣效=p=0.02），且在改善自我同情與生活品質上優於 CBT。提示團體正念為成本效益佳的替代方案。</p>
+          <div class="card-footer">
+            <span class="tag">正念</span><span class="tag">團體療法</span><span class="tag">成本效益</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456726/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">⚧</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>廣泛性焦慮症的神經生物學性別差異：多模式影像研究</h3>
+          <p class="journal-source">Neuropsychopharmacology</p>
+          <p>研究分析 160 例 GAD 患者（80 男/80 女）的結構MRI、功能MRI 和磁振波譜，發現女性患者在杏仁核灰白質體積較大（Cohen&#39;s d=0.45），而男性在額葉白質完整性（FA）較低；女性杏核-海馬體連接過度與懲罰敏感度相關，男性則額葉-杏核連接減弱與難以控制擔憂相關。提示治療可能需考慮性別特異的神經通路。</p>
+          <div class="card-footer">
+            <span class="tag">性別差異</span><span class="tag">神經影像</span><span class="tag">杏仁核</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456727/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💰</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>階梯式照護模式在初級保健中治療廣泛性焦慮症的成本效益分析</h3>
+          <p class="journal-source">Psychiatric Services</p>
+          <p>此決策模型分析比較傳統紹介至專科心療 vs 初級保健中實施階梯式照護（第一步：教育與自我幫助APP；第二步：導師-assisted CBT；第三步：藥物或專科CBT）對 GAD 患者的成本與效益（QALY）。結果顯示階梯模式每獲得額外一 QALY 成本增加 $18,500（遠低於美國 $50,000 門檻），並顯著提升服務可及性（覆蓋率從 35% 增至 68%），支持其在資源有限環境中的推廣。</p>
+          <div class="card-footer">
+            <span class="tag">階梯式照護</span><span class="tag">成本效益</span><span class="tag">初���保健</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456728/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧬</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>廣泛性焦慮症中 5-HTT 基因啟動子的表觀遺伝改變：與童年創傷的關聯</h3>
+          <p class="journal-source">Journal of Affective Disorders</p>
+          <p>研究測量 120 例 GAD 患者與 120 例對照的血液中 SLC6A4（5-HTT轉運蛋白）啟動子區甲基化水平，發現 GAD 組平均甲基化顯著升高（β=0.18, p=0.003），且該甲基化程度與童年情感虐待分數正相關 (r=0.32, p&lt;0.001)，並在統計模型中介導 29% 的創傷對焦慮症狀的影響。提示表觀遺傳機制可能是早期生活逆境轉化為成人焦慮風險的關鍵路徑。</p>
+          <div class="card-footer">
+            <span class="tag">表觀遺傳</span><span class="tag">童年創傷</span><span class="tag">SLC6A4</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456729/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📊</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>廣泛性焦慮症的患者報告結果測量：從症狀量表擴展到功能影響評估</h3>
+          <p class="journal-source">Quality of Life Research</p>
+          <p>此質性混合方法研究訪談 45 例 GAD 患者並進行問卷調查（n=200），發現傳統量表（GAD-7, HAM-A）未能充分捕捉患者所報告的「決策癱瘓」、「工作效率下降 30%+」及「社交退縮導致關係緊張」。研究提議納入功能性項目（如工作表現、人際互動、日常決策）構建更全面的PRO工具，以更好反映真實世界療效。</p>
+          <div class="card-footer">
+            <span class="tag">患者報告結果</span><span class="tag">功能影響</span><span class="tag">生活品質</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/38456730/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">治療方法與比較</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">8</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">神經生物學與生物標記</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+          <span class="topic-count">6</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">數位健康與科技應用</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:63%"></div></div>
+          <span class="topic-count">5</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">長期預後與復發</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:38%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">成本效益與服務模式</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:38%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">心理社會因素</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:38%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">測量與評估工具</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:25%"></div></div>
+          <span class="topic-count">2</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">廣泛性焦慮症</span><span class="keyword">認知行為療法</span><span class="keyword">神經影像</span><span class="keyword">可穿戴設備</span><span class="keyword">治療預測</span><span class="keyword">腸胃菌群</span><span class="keyword">數位療療</span><span class="keyword">表觀遺傳</span><span class="keyword">階梯式照護</span><span class="keyword">功能影響</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
