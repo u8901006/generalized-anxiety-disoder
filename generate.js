@@ -32,7 +32,7 @@ const SEARCH_QUERIES = [
   },
 ];
 
-const FALLBACK_MODELS = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
+const FALLBACK_MODELS = ["nvidia/nemotron-3-ultra-550b-a55b"];
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
