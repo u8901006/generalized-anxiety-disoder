@@ -235,10 +235,12 @@ function getDateRange() {
 
 function getTaiwanDateString(date = new Date()) {
   const weekdays = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"];
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
-  const d = date.getDate();
-  const w = weekdays[date.getDay()];
+  // Taiwan is UTC+8 year-round; use UTC getters on the shifted instant.
+  const local = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+  const y = local.getUTCFullYear();
+  const m = local.getUTCMonth() + 1;
+  const d = local.getUTCDate();
+  const w = weekdays[local.getUTCDay()];
   return `${y}年${m}月${d}日（${w}）`;
 }
 
@@ -528,7 +530,7 @@ async function main() {
   }
 
   const now = new Date();
-  const dateStr = now.toISOString().split("T")[0];
+  const dateStr = new Date(now.getTime() + 8 * 60 * 60 * 1000).toISOString().split("T")[0];
   const taiwanDate = getTaiwanDateString(now);
   console.log(`Date: ${dateStr} (${taiwanDate})`);
 
