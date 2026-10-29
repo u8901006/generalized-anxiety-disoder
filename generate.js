@@ -74,27 +74,42 @@ async function searchPubMed(searchTerm, retmax = 20) {
 async function fetchPubMedDetails(ids) {
   if (!ids.length) return [];
   const baseUrl = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi";
-  const params = new URLSearchParams({
-    db: "pubmed",
-    id: ids.join(","),
-    retmode: "json",
-  });
-  const url = `${baseUrl}?${params.toString()}`;
-  const data = JSON.parse(await fetchUrl(url));
-  const result = data.result || {};
-  const uids = result.uids || [];
-  return uids.map((uid) => {
-    const item = result[uid] || {};
-    return {
-      pmid: uid,
-      title: item.title || "No title",
-      source: item.source || "",
-      pubdate: item.pubdate || "",
-      authors: (item.authors || []).slice(0, 5).map((a) => a.name),
-      fulljournalname: item.fulljournalname || item.source || "",
-      elocationid: item.elocationid || "",
-    };
-  });
+  const articles = [];
+  for (let offset = 0; offset < ids.length; offset += 10) {
+    const batch = ids.slice(offset, offset + 10);
+    const params = new URLSearchParams({ db: "pubmed", id: batch.join(","), retmode: "json" });
+    let result;
+    let lastError;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const data = JSON.parse(await fetchUrl(`${baseUrl}?${params.toString()}`));
+        if (data.error || data.ERROR) throw new Error(String(data.error || data.ERROR));
+        if (!Array.isArray(data.result?.uids) || data.result.uids.length === 0)
+          throw new Error(`NCBI ESummary returned no UIDs for ${batch.length} requested PMIDs`);
+        result = data.result;
+        break;
+      } catch (error) {
+        lastError = error;
+        console.warn(`PubMed detail batch ${offset / 10 + 1}, attempt ${attempt}: ${error.message}`);
+        if (attempt < 3) await new Promise((r) => setTimeout(r, 1000 * attempt));
+      }
+    }
+    if (!result) throw new Error(`PubMed details unavailable: ${lastError?.message}`);
+    for (const uid of result.uids) {
+      const item = result[uid] || {};
+      if (!item.title) continue;
+      articles.push({
+        pmid: uid, title: item.title, source: item.source || "",
+        pubdate: item.pubdate || "",
+        authors: (item.authors || []).slice(0, 5).map((a) => a.name),
+        fulljournalname: item.fulljournalname || item.source || "",
+        elocationid: item.elocationid || "",
+      });
+    }
+    if (offset + 10 < ids.length) await new Promise((r) => setTimeout(r, 400));
+  }
+  if (!articles.length) throw new Error("No usable PubMed details; refusing to publish an empty report");
+  return articles;
 }
 
 // Send one request at a time. Transport errors, HTTP failures and malformed
@@ -164,7 +179,17 @@ async function callNvidiaWithFallback(messages) {
       console.log(`Trying model: ${model} (attempt ${attempt}/2)`);
       try {
         const response = await requestNvidia(model, messages);
-        console.log(`Success with model: ${model}`);
+        // Do not accept a nominally successful but empty/incomplete AI response.
+        const content = response.choices[0].message.content.trim();
+        const firstBrace = content.indexOf("{");
+        const lastBrace = content.lastIndexOf("}");
+        const report = JSON.parse(content.slice(firstBrace, lastBrace + 1));
+        if (firstBrace < 0 || lastBrace <= firstBrace ||
+            !Array.isArray(report.top_picks) || report.top_picks.length === 0 ||
+            typeof report.summary !== "string") {
+          throw new Error("Model returned an incomplete research report");
+        }
+        console.log(`Success with model: ${model}; ${report.top_picks.length} top picks`);
         return { ...response, model: response.model || model };
       } catch (error) {
         lastError = error;
