@@ -7,7 +7,7 @@ const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
 const NVIDIA_API_BASE = "https://integrate.api.nvidia.com/v1/chat/completions";
 const DAYS_BACK = parseInt(process.env.DAYS_BACK || "7", 10);
 const MAX_TOKENS = 16384;
-const TIMEOUT_MS = 480000;
+const TIMEOUT_MS = 120000;
 
 const SEARCH_QUERIES = [
   {
@@ -32,7 +32,11 @@ const SEARCH_QUERIES = [
   },
 ];
 
-const FALLBACK_MODELS = ["nvidia/nemotron-3-ultra-550b-a55b"];
+const FALLBACK_MODELS = [
+  "nvidia/nemotron-3-ultra-550b-a55b",
+  "nvidia/nemotron-3.5-lightning-30b-a3b",
+  "moonshotai/kimi-k2.6",
+];
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
@@ -93,160 +97,92 @@ async function fetchPubMedDetails(ids) {
   });
 }
 
-function callNvidiaAPI(messages) {
+// Send one request at a time. Transport errors, HTTP failures and malformed
+// responses reject, so the caller can retry or switch models reliably.
+function requestNvidia(model, messages) {
   return new Promise((resolve, reject) => {
-    const postData = JSON.stringify({
-      model: FALLBACK_MODELS[0],
+    const body = JSON.stringify({
+      model,
       messages,
       max_tokens: MAX_TOKENS,
       temperature: 1.0,
       top_p: 0.95,
       stream: false,
-      chat_template_kwargs: { enable_thinking: false },
+      ...(model.startsWith("nvidia/")
+        ? { chat_template_kwargs: { enable_thinking: false } }
+        : {}),
     });
 
-    const urlObj = new URL(NVIDIA_API_BASE);
-
-    for (const model of FALLBACK_MODELS) {
-      const body = JSON.stringify({
-        model,
-        messages,
-        max_tokens: MAX_TOKENS,
-        temperature: 1.0,
-        top_p: 0.95,
-        stream: false,
-        chat_template_kwargs: { enable_thinking: false },
+    const req = https.request(NVIDIA_API_BASE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${NVIDIA_API_KEY}`,
+        "Content-Length": Buffer.byteLength(body),
+      },
+    }, (res) => {
+      let data = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk) => {
+        data += chunk;
+        if (data.length > 10_000_000) req.destroy(new Error("API response too large"));
       });
-
-      const options = {
-        hostname: urlObj.hostname,
-        port: 443,
-        path: urlObj.pathname,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${NVIDIA_API_KEY}`,
-        },
-        timeout: TIMEOUT_MS,
-      };
-
-      const req = https.request(options, (res) => {
-        let data = "";
-        res.on("data", (chunk) => (data += chunk));
-        res.on("end", () => {
-          if (res.statusCode === 200) {
-            try {
-              const parsed = JSON.parse(data);
-              resolve(parsed);
-            } catch (e) {
-              console.error(`JSON parse error with model ${model}:`, e.message);
-            }
-          } else {
-            console.error(`Model ${model} failed: ${res.statusCode}`);
+      res.on("error", reject);
+      res.on("end", () => {
+        if (res.statusCode !== 200) {
+          const error = new Error(`HTTP ${res.statusCode}: ${data.slice(0, 400)}`);
+          error.statusCode = res.statusCode;
+          return reject(error);
+        }
+        try {
+          const parsed = JSON.parse(data);
+          const content = parsed.choices?.[0]?.message?.content;
+          if (typeof content !== "string" || !content.trim()) {
+            throw new Error("API response contains no assistant message content");
           }
-        });
+          resolve(parsed);
+        } catch (error) {
+          reject(error);
+        }
       });
+    });
 
-      req.on("error", (e) => {
-        console.error(`Model ${model} error:`, e.message);
-      });
-
-      req.on("timeout", () => {
-        console.error(`Model ${model} timeout`);
-        req.destroy();
-      });
-
-      req.write(body);
-      req.end();
-
-      return;
-    }
-
-    reject(new Error("All models failed"));
+    req.setTimeout(TIMEOUT_MS, () => {
+      req.destroy(new Error(`Request timed out after ${TIMEOUT_MS} ms`));
+    });
+    req.on("error", reject);
+    req.end(body);
   });
 }
 
-function callNvidiaWithFallback(messages) {
-  return new Promise((resolve, reject) => {
-    let modelIndex = 0;
+async function callNvidiaWithFallback(messages) {
+  if (!NVIDIA_API_KEY) throw new Error("Missing NVIDIA_API_KEY secret");
+  let lastError;
 
-    function tryNext() {
-      if (modelIndex >= FALLBACK_MODELS.length) {
-        return reject(new Error("All models failed"));
+  for (const model of FALLBACK_MODELS) {
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      console.log(`Trying model: ${model} (attempt ${attempt}/2)`);
+      try {
+        const response = await requestNvidia(model, messages);
+        console.log(`Success with model: ${model}`);
+        return { ...response, model: response.model || model };
+      } catch (error) {
+        lastError = error;
+        console.error(`Model ${model} failed: ${error.message}`);
+        if (error.statusCode === 401 || error.statusCode === 403) {
+          throw new Error("NVIDIA API authentication or permission error; check secret and model access");
+        }
+        const retryable = !error.statusCode ||
+          error.statusCode === 408 ||
+          error.statusCode === 429 ||
+          error.statusCode >= 500;
+        if (!retryable || attempt === 2) break;
+        await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
       }
-      const model = FALLBACK_MODELS[modelIndex];
-      console.log(`Trying model: ${model}`);
-
-      const body = JSON.stringify({
-        model,
-        messages,
-        max_tokens: MAX_TOKENS,
-        temperature: 1.0,
-        top_p: 0.95,
-        stream: false,
-        chat_template_kwargs: { enable_thinking: false },
-      });
-
-      const urlObj = new URL(NVIDIA_API_BASE);
-      const options = {
-        hostname: urlObj.hostname,
-        port: 443,
-        path: urlObj.pathname,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${NVIDIA_API_KEY}`,
-          "Content-Length": Buffer.byteLength(body),
-        },
-      };
-
-      const req = https.request(options, (res) => {
-        let data = "";
-        res.on("data", (chunk) => (data += chunk));
-        res.on("end", () => {
-          if (res.statusCode === 200) {
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.choices && parsed.choices[0]) {
-                console.log(`Success with model: ${model}`);
-                return resolve(parsed);
-              }
-              console.error(`No choices from ${model}, trying next...`);
-              modelIndex++;
-              tryNext();
-            } catch (e) {
-              console.error(`JSON parse error from ${model}:`, e.message);
-              modelIndex++;
-              tryNext();
-            }
-          } else {
-            console.error(`Model ${model} returned ${res.statusCode}: ${data.substring(0, 200)}`);
-            modelIndex++;
-            tryNext();
-          }
-        });
-      });
-
-      req.on("error", (e) => {
-        console.error(`Model ${model} error:`, e.message);
-        modelIndex++;
-        tryNext();
-      });
-
-      req.on("timeout", () => {
-        console.error(`Model ${model} timeout after ${TIMEOUT_MS}ms`);
-        req.destroy();
-        modelIndex++;
-        tryNext();
-      });
-
-      req.setTimeout(TIMEOUT_MS);
-      req.write(body);
-      req.end();
     }
+  }
 
-    tryNext();
-  });
+  throw new Error(`All AI models failed: ${lastError?.message || "unknown error"}`);
 }
 
 function loadSummarizedPmids() {
