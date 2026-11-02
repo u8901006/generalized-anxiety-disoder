@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年11月3日（週二）</title>
+<meta name="description" content="2026年11月3日（週二） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月3日（週二）</span>
+        <span class="badge badge-count">📊 9 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">本日文獻集中於GAD跨領域併發症研究，顯示數位介入、機器學習應用及跨領域併發症評估為熱門趨勢。其中包含多項關於數位CBT、機器學習分類及慢性疾病共病的研究，反映了精神醫學研究向量性和科技整合的發展方向。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🔬</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>整合代謝組學與機器學習 揭示前庭性偏頭痛代謝簽名與候選生物標記物</h3>
+          <p class="journal-source">Journal of proteome research &middot; Integrating Metabolomics and Machine Learning Reveals Metabolic Signatures and Candidate Biomarkers for Vestibular Migraine</p>
+          <p>本研究利用代謝組學和機器學習技術，在前庭性偏頭痛患者中識別出代謝簽名與候選生物標記物。雖非直接研究GAD，但其前沿的多OMICS整合方法為GAD生物標誌物研究提供新思路。研究識別出多種代謝物與疾病嚴重度相關，展現了機器學習在精神神經科學領域的潛力。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Patients with vestibular migraine</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Metabolomics and machine learning analysis</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Metabolic signatures and biomarkers</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">metabolomics</span><span class="tag">machine learning</span><span class="tag">biomarkers</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42918111/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🏥</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>衝突影響地區葉門護士的心理健康、職業燒燱與離職意向：八個可及行政區的多中心研究</h3>
+          <p class="journal-source">Nursing reports (Pavia, Italy) &middot; Mental Health, Burnout, and Turnover Intention Among Nurses in Conflict-Affected Yemen: A Multicenter Study Across Eight Accessible Governorates</p>
+          <p>在葉門衝突背景下，對8個行政區的護士進行多中心研究，揭示了高比例的心理健康問題、嚴重的職業燒燱和顯著的離職意向。研究發現心理健康問題與工作環境密相關，為職業GAD干預提供了重要證據。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Nurses in conflict-affected Yemen</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Mental health assessment</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Burnout and turnover intention</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">nurses</span><span class="tag">burnout</span><span class="tag">turnover</span><span class="tag">conflict zone</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42931326/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>分析中國成年人併發焦慮和抑郁的因素：大規模跨-sectional研究</h3>
+          <p class="journal-source">Brain and behavior &middot; An Analysis of Factors Influencing Comorbid Anxiety and Depression Among Adults in China: A Large-Scale Cross-Sectional Study</p>
+          <p>在中國大規模樣本中分析焦慮和抑郁併發因素，識別出若干顯著的社會人口學和生活方式預測因子。作為GAD流行病學研究的重要參考，結果有助於瞭解GAD在人口中的分佈規律和風險因子。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Adults in China</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Analysis of comorbid anxiety and depression factors</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Identifying influencing factors</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">comorbidity</span><span class="tag">China</span><span class="tag">cross-sectional study</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42905896/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🤖</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>CART機器學習剝離路徑用於人群篩查中焦慮和抑嚴重程度分類</h3>
+          <p class="journal-source">Global epidemiology &middot; CART machine learning peeling pathways for anxiety and depression severity classification in population screening</p>
+          <p>採用CART機器學習模型對人群篩查數據進行焦慮和抑鬱嚴重程度分類，發現了不同的分類路徑。此方法可應用於GAD篩查，透過機器學習識別高風險人群並確定關鍵預測因子，提高篩查的精準度。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Population screening</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">CART machine learning model</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Anxiety and depression severity classification</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">machine learning</span><span class="tag">CART</span><span class="tag">screening</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42921351/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>將短訊和郵件數據納入心理治療：隨機對照試驗</h3>
+          <p class="journal-source">JMIR mental health &middot; Incorporating Data From Text Messages and Email Into Psychotherapy: Randomized Controlled Trial</p>
+          <p>隨機對照試驗評估將短訊和郵件數據整合進心理治療的效果。研究發現數位溝通數據的整合顯著改善治療結果，展現了數位監測在GAD管理中的潛力，為介入提供了實時數據支撐。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Patients undergoing psychotherapy</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Incorporating text message and email data</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Standard psychotherapy</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Psychological and functional outcomes</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">digital psychotherapy</span><span class="tag">text messages</span><span class="tag">RCT</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42896155/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👂</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>突感性聽力損失患者聽覺症狀負擔與焦慮、抑鬱關聯</h3>
+          <p class="journal-source">Zhonghua yi xue za zhi</p>
+          <p>研究探討突感性聽力損失患者聽覺症狀負擔與焦慮、抑鬱間的關聯。發現聽覺症狀負擔與焦慮及抑鬱呈顯著正相關，提示聽力問題可能是GAD的重要風險因素或併發症。</p>
+          <div class="card-footer">
+            <span class="tag">hearing loss</span><span class="tag">anxiety</span><span class="tag">depression</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42967653/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧠</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>路易體痴呆中焦慮的臨斷和治療</h3>
+          <p class="journal-source">The American journal of geriatric psychiatry</p>
+          <p>探討路易體痴呆患者焦慮的臨床診斷和治療策略。該研究提供了老年GAD併發症的特定臨床指引，對於老年患者的併發症管理具有重要參考價值。</p>
+          <div class="card-footer">
+            <span class="tag">dementia with Lewy bodies</span><span class="tag">geriatric psychiatry</span><span class="tag">anxiety treatment</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42331675/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧘</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>身心整合護理與糖尿病孕婦睡眠、代謝圖像及妊娠結論的關聯：前瞻性隊列研究</h3>
+          <p class="journal-source">Medicine</p>
+          <p>前瞻性研究評估身心整合護理對糖尿病孕婦睡眠、代謝狀況及妊娠結論的影響。研究發現身心介入顯著改善睡眠質量和代謝參數，對GAD的身心治療提供了新模式。</p>
+          <div class="card-footer">
+            <span class="tag">mind-body</span><span class="tag">gestational diabetes</span><span class="tag">pregnancy outcomes</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41995528/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👥</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>婦女 empowerment 與孟加拉國已婚婦女焦慮和抑鬽症狀之間的關係：國家級代表性橫斷面研究</h3>
+          <p class="journal-source">Depression and anxiety</p>
+          <p>利用國家級代表性樣本探討婦女 empowerment 與已婚婦女焦慮抑鬽症狀的關聯。研究發現 empowerment 程度與心理健康呈顯著正相關，為性別特定的GAD干預提供了社會層面的證據。</p>
+          <div class="card-footer">
+            <span class="tag">women empowerment</span><span class="tag">Bangladesh</span><span class="tag">cross-sectional study</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42967123/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">Digital Interventions</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:38%"></div></div>
+          <span class="topic-count">5</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Machine Learning &amp; AI</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:31%"></div></div>
+          <span class="topic-count">4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Comorbidity &amp; Cross-Disorder</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:31%"></div></div>
+          <span class="topic-count">4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Population Epidemiology</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Clinical Guidelines &amp; Treatment</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Specific Patient Groups</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:23%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Mind-Body Interventions</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:15%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Occupational Health</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:15%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Gender-Specific Research</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:15%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Traditional &amp; Alternative Medicine</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:15%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Other Topics</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">13</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">GAD</span><span class="keyword">anxiety</span><span class="keyword">machine learning</span><span class="keyword">comorbidity</span><span class="keyword">digital intervention</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
