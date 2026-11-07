@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年11月8日（週日）</title>
+<meta name="description" content="2026年11月8日（週日） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月8日（週日）</span>
+        <span class="badge badge-count">📊 10 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦數位健介介入與慢性身心症狀研究。其中以 mHealth 應用、數位正念介入及慢性疼痛管理為熱門議題。多項研究探索數位工具於焦慮症狀之有效性與接受度，顯示數位治療在擴大精神健康服務可及性方面具有潛力，但仍需更多 GAD 專屬臨床驗證。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>Tankevirus 與 Grubl 精神健康 App 與安慰劑 App 比較之效果與成本效益：隨機對照研究者蒙雙盲試方案。</h3>
+          <p class="journal-source">JMIR research protocols &middot; Effectiveness and Cost-Effectiveness of the Tankevirus and Grubl Mental Health Apps Compared With a Placebo App-Mental Health Intervention With Digital Applications (MIND-APP): Protocol for a Randomized Controlled Researcher-Blinded Trial.</p>
+          <p>本研究設計了一個研究者蒙雙盲的隨機對照試驗，比較 Tankevirus 與 Grubl 兩款精神健康 App 與安慰劑 App 的效果與成本效益。作為數位精神健康介入證據基礎的重要研究。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Adults with mental health concerns</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Digital mental health apps (Tankevirus, Grubl)</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Placebo app</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Effectiveness and cost-effectiveness outcomes</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">digital mental health</span><span class="tag">RCT protocol</span><span class="tag">cost-effectiveness</span><span class="tag">anxiety apps</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42575499/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🧘</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>數位正念介入對非傳染性uveitis 精神健康與視力相關生活品質之影響。</h3>
+          <p class="journal-source">Ophthalmology &middot; The Effects of a Digital Mindfulness Intervention on Mental Health and Vision-Related Quality of Life in Noninfectious Uveitis.</p>
+          <p>研究評估了一個數位正念介入對非傳染性uveitis 病人的精神健康和視力相關生活品質的影響。結果顯示數位正念可顯著改善患者的心理狀態與視野相關生活品質。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Patients with noninfectious uveitis</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Digital mindfulness intervention</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Usual care or waitlist</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Mental health and vision-related quality of life improvements</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">digital mindfulness</span><span class="tag">uveitis</span><span class="tag">mental health</span><span class="tag">quality of life</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42297306/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">😴</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>使用心理與體能指標在中老年腹部肥胖人群中識別睡眠品質差。</h3>
+          <p class="journal-source">Frontiers in public health &middot; Community-based identification of poor sleep quality in middle-aged and older adults with abdominal obesity using psychological and physical fitness indicators.</p>
+          <p>研究利用心理與體能指標，在中老年腹部肥胖人群中識別睡眠品質差。發現體能指標與睡眠品質顯著相關，提供了一種社區層面篩識睡眠問題的實用方法。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Middle-aged and older adults with abdominal obesity</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Psychological and physical fitness indicators</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Standard screening methods</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Identification of poor sleep quality</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">sleep quality</span><span class="tag">abdominal obesity</span><span class="tag">community health</span><span class="tag">psychological indicators</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42979658/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">👶</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>阿布扎比母親產後憂鬱與焦慮症狀社會決定因子分析。</h3>
+          <p class="journal-source">Social psychiatry and psychiatric epidemiology &middot; Social determinants of postpartum depressive and anxiety symptoms among mothers in the Emirate of Abu Dhabi: findings from the maternal and infant health monitoring system.</p>
+          <p>研究探討了阿布扎比母親產後憂鬱和焦慮症狀的社會決定因子。發現年齡、教育程度及經濟狀況等因素與產後心理健康密切相關，具有重要的公共衛生意義。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Postpartum mothers</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Social determinants</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">General population comparisons</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Depressive and anxiety symptoms prevalence</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">postpartum anxiety</span><span class="tag">social determinants</span><span class="tag">maternal health</span><span class="tag">health disparities</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42993278/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🏥</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>印度前線非醫療護理人員精神健康篩查與管理工作流程的開發與實測：混合方法研究。</h3>
+          <p class="journal-source">BMJ public health &middot; Development and pilot testing of workflow for screening and management of mental health conditions by front-line non-physician care providers in India: a mixed-methods approach.</p>
+          <p>研究開發並實測了一種印度前線非醫療護理人員篩查和管理精神健康狀況的工作流程。透過混合方法證明了該流程的可行性與可接受性，有助於在資源有限的環境中擴大精神健康服務。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Front-line non-physician care providers in India</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Mental health screening and management workflow</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Standard care</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Feasibility and acceptability of the workflow</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">screening workflow</span><span class="tag">non-physician providers</span><span class="tag">mixed methods</span><span class="tag">low-resource settings</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42991146/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💊</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>從 Elexacaftor/Tezacaftor/Ivacaftor 切換至 Vanzacaftor/Tezacaftor/Deutivacaftor 後之神經精神症變化：單中心經驗。</h3>
+          <p class="journal-source">Respiratory medicine</p>
+          <p>報告在 cystic fibrosis 病人轉換 CFTR 輔酶治療後，神經精神症狀有所改善。</p>
+          <div class="card-footer">
+            <span class="tag">CFTR modulator</span><span class="tag">neuropsychiatric symptoms</span><span class="tag">cystic fibrosis</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42994765/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🏥</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>沙特阿拉伯耳鼻喉門診成年人憂鬱與焦慮症狀患病率及相關因素。</h3>
+          <p class="journal-source">International journal of psychiatry in medicine</p>
+          <p>研究在沙特阿拉伯耳鼻喉門診調查成年人憂鬱與焦慮症狀患病率。發現患病率顯著，並與各種臨床及人口因素相關，提醒耳鼻喉科醫療人員關注患者心理健康。</p>
+          <div class="card-footer">
+            <span class="tag">prevalence</span><span class="tag">otolaryngology</span><span class="tag">depression anxiety</span><span class="tag">Saudi Arabia</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42981592/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🛡️</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>在尼日利亞衝突影響內部流離失所者中驗證創傷後壓力、憂鬱與焦慮篩查量表。</h3>
+          <p class="journal-source">Journal of traumatic stress</p>
+          <p>研究在尼日利亞衝突影響的內部流離失所者中驗證了創傷後壓力、憂鬱和焦慮的篩查量表。結果提供了在人道主義環境中可靠的精神健康篩查工具。</p>
+          <div class="card-footer">
+            <span class="tag">validation</span><span class="tag">IDPs</span><span class="tag">PTSD depression anxiety</span><span class="tag">Nigeria</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42967956/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🤖</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>可解釋機器學習識別中國阻塞性睡眠呼吸暫停患者輕度認知障礙：多中心橫斷研究。</h3>
+          <p class="journal-source">BMC psychiatry</p>
+          <p>研究使用可解釋的機器學習模型，在中國阻塞性睡眠呼吸暫停患者中識別輕度認知障礙。模型表現良好，提供了一種新的識別認知衰退的方法。</p>
+          <div class="card-footer">
+            <span class="tag">machine learning</span><span class="tag">OSA</span><span class="tag">mild cognitive impairment</span><span class="tag">Chinese patients</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42947071/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📝</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>在土耳其非臨床樣本中開發與初步驗證攝食障礙相關反刍評量量表。</h3>
+          <p class="journal-source">BMC psychology</p>
+          <p>研究開發了一個攝食障礙相關反刍的評量量表，並在土耳其非臨床樣本中進行了初步驗證。量表顯示良好的信度與效度。</p>
+          <div class="card-footer">
+            <span class="tag">eating disorder</span><span class="tag">rumination assessment scale</span><span class="tag">Turkish sample</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42934748/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">Digital Mental Health Interventions</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Prevalence and Epidemiology</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">4</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Sleep and Psychological Indicators</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Specialized Populations (Postpartum, IDPs, CF)</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:75%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Machine Learning &amp; AI in Psychiatry</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Clinical Validation Studies</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Pain and Somatic Symptoms</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Cultural Adaptation &amp; Validation</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Primary Care &amp; Task Shifting</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Other Specialized Topics</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">4</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">GAD</span><span class="keyword">digital mental health</span><span class="keyword">mindfulness</span><span class="keyword">prevalence</span><span class="keyword">social determinants</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
