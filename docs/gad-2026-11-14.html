@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年11月14日（週六）</title>
+<meta name="description" content="2026年11月14日（週六） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月14日（週六）</span>
+        <span class="badge badge-count">📊 7 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦於廣泛性焦慮症跨越人生週期的併發性及生理系統互動。顯著研究包括青少年母親焦慮症軌跡、糖尿病患者睡眠質量與焦慮的關聯、以及生殛年齡婦女飲水鹽分與精神困擾的關聯。此外，數位介入與機器學習在精神健康風險評估中的應用也備受關注。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">👶</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>坦尚尼亞姆薩研究青少年母親廣泛性焦慮症的持久性與緩解：嵌於非藥物干預隊列的縱向觀察研究</h3>
+          <p class="journal-source">Frontiers in global women&#39;s health &middot; Persistence and remission of depressive and generalized anxiety symptoms among adolescent mothers in Mwanza, Tanzania: a longitudinal observational study embedded within a non-pharmacological intervention cohort.</p>
+          <p>研究跟蹤坦尚尼亞姆薩青少年母親在產後六個月內廣泛性焦慮和抑鬱症狀的持久性與緩解情況。發現非藥物干預對緩解焦慮症狀具有顯著效果，但不同焦慮症狀的持久性模式各異。研究提供了關於產後焦慮發病風險因子與干預有效性的實證數據，對產後心理健康護理具有重要臨床參考價值。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Adolescent mothers</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Non-pharmacological intervention</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Observational cohort</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Persistence and remission of GAD symptoms</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">adolescent mothers</span><span class="tag">longitudinal</span><span class="tag">remission</span><span class="tag">non-pharmacological intervention</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43016770/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🤕</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>成人長新冠多學科康復計畫的實際結果： retro spective cohort 研究</h3>
+          <p class="journal-source">BMC public health &middot; Real-world outcomes of a multidisciplinary rehabilitation programme for adults with long COVID: a retrospective cohort study.</p>
+          <p>研究評估了長新冠成人參與多學科康復計畫的實際效果。雖然主要焦點在於身體症狀，但研究亦檢視了精神健康方面的結論，發現多學科方案在改善長新冠相關的焦慮和雜覺症方面顯示出中等效果。這項研究對於理解慢性身體疾病中焦慮的生物心理社會模型具有重要意義。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Adults with long COVID</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Multidisciplinary rehabilitation programme</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Retrospective cohort</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Real-world outcomes including anxiety improvement</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">long COVID</span><span class="tag">multidisciplinary rehabilitation</span><span class="tag">real-world outcomes</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43009877/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">😴</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>糖尿病患者睡眠質量差與焦慮：與血糖控制的關聯</h3>
+          <p class="journal-source">PloS one &middot; Poor sleep quality and anxiety in patients with diabetes mellitus and its association with glycemic control: A cross-sectional study.</p>
+          <p>研究探討了糖尿病患者睡眠質量差與廣泛性焦慮之間的關聯，並分析其與血糖控制的相互作用。發現睡眠質量差是焦慮的獨立預測因子，且與血糖控制差有顯著正相關。結果提示，改善糖尿病患者的睡眠質量可能是優化血糖管理和減少焦慮症狀的重要策略。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Patients with diabetes mellitus</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Poor sleep quality</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Association with glycemic control and anxiety</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">diabetes mellitus</span><span class="tag">sleep quality</span><span class="tag">anxiety</span><span class="tag">glycemic control</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43013710/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🤖</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>大學生抑鬱與焦慮風險分層的行為與心理社會指標：機器學習輔助框架的開發與外部驗證</h3>
+          <p class="journal-source">Frontiers in psychology &middot; Behavioral and psychosocial indicators for depression and anxiety risk stratification among college students: development and external validation of a machine-learning-assisted framework.</p>
+          <p>研究開發並驗證了一個基於機器學習的框架，用於大學生抑鬱與焦慮的風險分層。通過整合行為指標和心理社會因子，該模型在外部驗證中表現出良好的預測能力。這項工具有潛力應用於大學校園的早期篩查與介入，提高精神健康服務的精準性。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">College students</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Machine-learning-assisted framework</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Traditional assessment</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Risk stratification for depression and anxiety</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">machine learning</span><span class="tag">college students</span><span class="tag">risk stratification</span><span class="tag">depression and anxiety</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43011366/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🩺</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>水泡性天疱疮患者的抑鬱與焦慮：系統綜述與敘述性綜合</h3>
+          <p class="journal-source">Indian journal of dermatology &middot; Depression and Anxiety in Patients with Bullous Pemphigoid: A Systematic Review and Narrative Synthesis.</p>
+          <p>本系統綜述總結了水泡性天疱疮患者中抑鬱和焦慮的患病率及相關因素。研究發現皮膚疾病患者發生併發性精神健康問題的風險顯著高於一般人群，並強調了身體疾病對心理健康負面影響的重要性。結果提示，皮膚科治療應同時考慮患者的心理健康需求。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Patients with bullous pemphigoid</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Not applicable</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not applicable</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Prevalence and factors of comorbid depression and anxiety</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">bullous pemphigoid</span><span class="tag">comorbid depression</span><span class="tag">systematic review</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43011989/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🤰</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>從懷孕到產後六個月，產後抑鬱、焦慮、認知壓力、睡眠質量與心理彈性的軌跡及其與流產和分娩次數的關係</h3>
+          <p class="journal-source">Frontiers in psychiatry</p>
+          <p>研究分析了從懷孕到產後六個月內，抑鬱、焦慮、認知壓力、睡眠質量和心理彈性的變化軌跡，並探討其與生育歷史（流產和分娩次數）的關聯。結果顯示，生育歷史是影響產期精神健康軌跡的重要因素，心理彈性在緩解焦慮方面起著保護作用。</p>
+          <div class="card-footer">
+            <span class="tag">perinatal</span><span class="tag">trajectories</span><span class="tag">psychological flexibility</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43016750/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📱</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>數位精神健康平台上首次自我評估的症狀嚴重程度與後續預約專業護理無關：5,524用戶隊列研究</h3>
+          <p class="journal-source">Frontiers in psychiatry</p>
+          <p>研究分析了沙烏迪亞心理健康平台上 5,524 名用戶的數據，發現首次自我評估時的症狀嚴重程度與之後預約專業醫療服務的可能性無顯著相關。這項發現挑戰了數位精神健康篩查提升服務利用率的假設，提醒我們在依賴數位工具進行精神健康管理時需謹慎，必須結合臨床評估。</p>
+          <div class="card-footer">
+            <span class="tag">digital mental health</span><span class="tag">help-seeking behaviour</span><span class="tag">Saudi Arabia</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43011306/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">Perinatal and reproductive mental health</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Comorbid physical and mental health conditions</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Digital mental health and AI applications</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:60%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Sleep and metabolic health interactions</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Specific population studies (adolescents, students, patients with specific diseases)</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">5</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">Generalized anxiety disorder</span><span class="keyword">perinatal mental health</span><span class="keyword">sleep quality</span><span class="keyword">diabetes</span><span class="keyword">machine learning</span><span class="keyword">comorbidity</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
