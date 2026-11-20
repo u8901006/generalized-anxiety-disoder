@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年11月21日（週六）</title>
+<meta name="description" content="2026年11月21日（週六） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月21日（週六）</span>
+        <span class="badge badge-count">📊 8 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻主要聚焦於教職員工心理健康支援、機器學習預測模型、戰爭流離所遺影響及生活習慣對健康的關聯。其中三篇研究直接探討教師及護理實習生的焦慮 distress，另一篇探討戰爭相關流離對心理的影響。此外，生活習慣（含 Bruxism）與焦慮的關聯也成為新興方向。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">💬</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>Wellness4Teachers 支持性簡訊項目與加拿大老師心理症狀改善關聯：單臂前瞻性縱向及自然控制研究。</h3>
+          <p class="journal-source">JMIR human factors &middot; Wellness4Teachers Supportive Text Messaging Program Association With Observed Improvement in Psychological Symptoms Among Teachers in Canada: Single-Arm Prospective Longitudinal and Naturalistic Controlled Study.</p>
+          <p>本研究評估一項支援性簡訊介入對教師心理症狀的影響。結果顯示，該程式顯著改善了教師的焦慮與抑郁症狀，透過每日或每週簡訊提供情緒支援與資源，對提升教職員工心理健康具實際效益。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Teachers with psychological symptoms</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Supportive text messaging program</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Naturalistic controlled</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Improvement in psychological symptoms</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">teachers</span><span class="tag">text messaging</span><span class="tag">intervention</span><span class="tag">anxiety</span><span class="tag">depression</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42896217/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🤖</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>開發並驗證一款用於預測護理實習生焦慮風隹的機器學習模型與線上計算器。</h3>
+          <p class="journal-source">BMC nursing &middot; Development and validation of a machine learning model with a web-based calculator for predicting anxiety risk among nursing interns.</p>
+          <p>研究開發了一款機器學習模型並配備網頁計算器，以預測護理實習生的焦慮風險。模型整合了學業壓力、社交支援等變項，展現出良好的預測能力，有助於早期識別高風險個體，以進行針對性心理介入。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Nursing interns</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Machine learning model with web-based calculator</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Anxiety risk prediction</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">machine learning</span><span class="tag">nursing interns</span><span class="tag">risk prediction</span><span class="tag">anxiety</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43058697/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">🌍</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>黎巴嫩大學生戰爭相關流離與重新融入與心理健康及學術體驗的關聯：橫斷研究。</h3>
+          <p class="journal-source">BMC psychology &middot; Associations of war-related displacement and reintegration with mental health and academic experiences among university students in Lebanon: a cross-sectional study.</p>
+          <p>研究探討黎巴嫩大學生中戰爭流離與重新融入對心理健康與學術體驗的影響。結果顯示，流離經歷顯著相關於較高的焦慮與 distress，重新融入過程是緩解負面影響的關鍵因子，具有重要的戰爭創傷心理健康啟示。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">University students in Lebanon</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">War-related displacement and reintegration</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Mental health and academic experiences</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">displacement</span><span class="tag">reintegration</span><span class="tag">university students</span><span class="tag">anxiety</span><span class="tag">war trauma</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43058815/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">😬</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>生活習慣、焦慮水平與未診斷成人磨牙相關徵象之間的關聯。</h3>
+          <p class="journal-source">Oral health &amp; preventive dentistry &middot; Association Between Lifestyle Habits, Anxiety Levels, and Bruxism-Related Signs in Undiagnosed Adults.</p>
+          <p>研究調查了生活習慣、焦慮水平與磨牙症徵象於未診斷成人間的關聯。發現較高的焦慮分數與 Bruxism 徵象顯著相關，不健康的生活習慣（如吸煙、飲酒）是加劇因素，提示在治療磨牙症時應同時評估與管理焦慮。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Undiagnosed adults</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Lifestyle habits and anxiety levels</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Bruxism-related signs</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">bruxism</span><span class="tag">anxiety</span><span class="tag">lifestyle habits</span><span class="tag">adults</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43059044/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🤰</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>接受長期住院產婦的心理 distress：前瞻性觀察研究。</h3>
+          <p class="journal-source">European journal of obstetrics, gynecology, and reproductive biology &middot; Psychological distress in pregnant women undergoing prolonged hospitalization: A prospective observational study.</p>
+          <p>研究探討接受長期住院甕甦婦的心理 distress 水平。結果發現住院期間焦慮和抑郁症狀普遍存在，醫療環境因素（如疼痛、不確定性）是主要促成因子，產前心理健康監測對改善母嬰結論結論結論至關重要。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">Pregnant women with prolonged hospitalization</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">Prospective observational study</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Not specified</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Psychological distress</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">pregnancy</span><span class="tag">prolonged hospitalization</span><span class="tag">psychological distress</span><span class="tag">anxiety</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42863340/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💬</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>Wellness4Teachers 支持性簡訊項目與加拿大老師心理症狀改善關聯：單臂前瞻性縱向及自然控制研究。</h3>
+          <p class="journal-source">JMIR human factors</p>
+          <p>研究評估一項支援性簡訊介入對教師心理症狀的影響。結果顯示，該程式顯著改善了教師的焦慮與抑郁症狀。</p>
+          <div class="card-footer">
+            <span class="tag">teachers</span><span class="tag">text messaging</span><span class="tag">intervention</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42896217/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">📝</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>從自由文本回應中評估心理健康支援需求：內向症狀成人語言評估開發與驗證。</h3>
+          <p class="journal-source">JMIR mental health</p>
+          <p>研究開發語言基礎評估工具，以從自由文本中識別內向症狀個體的心理健康支援需求。展示了自動化篩選心理健康需求的潛力，可輔助臨床資源分配。</p>
+          <div class="card-footer">
+            <span class="tag">language assessment</span><span class="tag">internalizing symptoms</span><span class="tag">mental health need</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42803493/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">👵</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>一對一同儕支援服務與老年人抑症介入結果關聯：香港晚生憂鬱社區分層照護計畫的證據。</h3>
+          <p class="journal-source">Journal of affective disorders</p>
+          <p>研究探討社區分層照護計畫中一對一同儕支援對晚年憂鬱症患者結論結論結論成果的影響。發現同儕支援顯著改善症狀嚴重度，提倡作為晚年心理健康干預的輔助模式。</p>
+          <div class="card-footer">
+            <span class="tag">peer support</span><span class="tag">older adults</span><span class="tag">depressive symptoms</span><span class="tag">stepped care</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42863799/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">Psychological intervention</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:50%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Risk prediction &amp; AI</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">War trauma &amp; displacement</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Lifestyle &amp; somatic symptoms</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">Specific populations (teachers, pregnant, students)</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">6</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">anxiety</span><span class="keyword">GAD</span><span class="keyword">text messaging intervention</span><span class="keyword">machine learning prediction</span><span class="keyword">war displacement</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3.5-lightning-30b-a3b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
