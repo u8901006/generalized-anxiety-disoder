@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GAD Research Daily &middot; 廣泛性焦慮症文獻日報 &middot; 2026年11月25日（週三）</title>
+<meta name="description" content="2026年11月25日（週三） 廣泛性焦慮症文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 48px; animation: fadeUp 0.5s ease 0.4s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); margin-bottom: 12px; }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">😰</div>
+    <div class="header-text">
+      <h1>GAD Research Daily &middot; 廣泛性焦慮症文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年11月25日（週三）</span>
+        <span class="badge badge-count">📊 5 篇文獻</span>
+<span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日收錄的5篇文獻中，無直接針對廣泛性焦慮症（GAD）治療或病理機轉的研究。主要主題圍繞：老年獨居者憂鬱焦慮症狀網絡分析、TikTok成癮與心理症狀關聯、自閉症成人焦慮症患病率、暴力社區醫療獲取困難與心理健康、以及大腸癌倖存者性功能。研究多為橫斷面流行病學調查，臨床干預參考價值有限。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">👵</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>獨居老年人憂鬱與焦慮症狀的潛在輪廓分析與網絡分析</h3>
+          <p class="journal-source">BMC psychology &middot; A latent profile analysis and network analysis of depression and anxiety symptoms among older adults living alone.</p>
+          <p>針對獨居老年人進行潛在輪廓分析（LPA）與網絡分析，識別出不同的憂鬱焦慮症狀亞群。研究發現症狀網絡中核心節點為「擔憂」與「情緒低落」，揭示焦慮與憂鬱在獨居老人中的共病結構，為精準篩查高風險亞群提供實證依據。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">獨居老年人</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">潛在輪廓分析與網絡分析</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">憂鬱焦慮症狀亞型與核心症狀識別</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">老年精神醫學</span><span class="tag">網絡分析</span><span class="tag">共病</span><span class="tag">社會隔離</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43074090/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">📱</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>沙烏地阿拉伯成人TikTok成癮盛行率及其與焦慮、憂鬱、ADHD症狀的關聯：橫斷面研究</h3>
+          <p class="journal-source">BMC psychology &middot; Prevalence of tiktok addiction and its association with anxiety, depression, and attention-deficit/hyperactivity disorder symptoms among adults in Saudi Arabia: a cross-sectional study.</p>
+          <p>調查沙國成人TikTok成癮盛行率，發現成癮程度與廣泛性焦慮症（GAD-7）、憂鬱（PHQ-9）及ADHD症顯著正相關。雖為相關性研究，但提示短影音平台成癮可能為年輕成人焦慮症狀的重要環境風險因子，臨床詢問時應納入數位媒體使用評估。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">沙烏地阿拉伯成人</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">TikTok成癮量表評估</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">非成癮者</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">GAD-7、PHQ-9、ASRS症狀嚴重度</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">行為成癮</span><span class="tag">社交媒體</span><span class="tag">年輕成人</span><span class="tag">流行病學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43074028/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">🧩</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>運用SCID-5訪談探討轉診神經發展障礙門診之自閉症成人焦慮症患病率</h3>
+          <p class="journal-source">BMC psychiatry &middot; Investigating the prevalence of anxiety disorders in autistic adults referred to the neurodevelopmental disorders clinic of Roozbeh hospital using the Structured clinical interview for DSM-5(®).</p>
+          <p>使用SCID-5金標準訪談評估自閉症成人焦慮症患病率，發現廣泛性焦慮症（GAD）為最常見共病焦慮障礙之一。研究強調自閉症成人焦慮症呈現非典型表徵，標準量表易漏診，建議臨床常規使用結構化訪併行行為觀察以提高偵測率。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">轉診神經發展門診之自閉症成人</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">SCID-5結構化診斷訪談</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">一般族群患病率</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">焦慮障礙（含GAD）患病率與症狀特徵</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">自閉症</span><span class="tag">共病</span><span class="tag">SCID-5</span><span class="tag">診斷挑戰</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43073897/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🏥</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>里約熱內盧暴力影響社區民眾就醫困難度：社會人口學與心理健康狀態分析</h3>
+          <p class="journal-source">BMC health services research &middot; Perceived difficulty accessing primary health care in a violence-affected community in the municipality of Rio de Janeiro, by sociodemographic characteristics and mental health status, 2024.</p>
+          <p>探討巴西暴力社區居民就醫障礙，發現焦慮/憂鬱症狀者感覺就醫困難度顯著較高（OR&gt;2）。研究揭示暴力創傷、心理症狀與醫療獲取的惡性循環，提醒臨床醫師關注社區暴力背景下焦慮患者的就醫依從性與照護連續性問題。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">暴力社區居民</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">感知就醫困難度問卷</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無心理症狀者</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">就醫障礙與焦慮憂鬱症狀關聯</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">醫療獲取</span><span class="tag">社區暴力</span><span class="tag">健康不平等</span><span class="tag">公共衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43073939/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🎗️</span>
+            <span class="utility-low">低實用性</span>
+          </div>
+          <h3>早發性大腸癌倖存者性功能：回顧性病例對照研究</h3>
+          <p class="journal-source">BJS open &middot; Sexual function in early-onset colorectal cancer survivors: retrospective case-control study.</p>
+          <p>比較早發性大腸癌倖存者與對照組性功能差異，發現倖存者性功能障礙顯著較高，並伴隨焦慮憂鬱症狀升高。雖非GAD專項研究，但說明癌症倖存者焦慮症狀常伴隨生活品質核心領域（如性功能）受損，臨床照護需納入心理性健康整合評估。</p>
+          <div class="pico-grid">
+            <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">早發性大腸癌倖存者</span></div>
+            <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">性功能量表評估</span></div>
+            <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">健康對照組</span></div>
+            <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">性功能分數、HADS焦慮憂鬱分數</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="tag">癌症倖存者</span><span class="tag">生活品質</span><span class="tag">性功能障礙</span><span class="tag">心身醫學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/43076451/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+        <div class="topic-row">
+          <span class="topic-name">流行病學/患病率</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+          <span class="topic-count">3</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">共病/特殊族群</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:67%"></div></div>
+          <span class="topic-count">2</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">數位健康/行為成癮</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">1</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">醫療照護獲取</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">1</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-name">心身醫學/倖存者照護</span>
+          <div class="topic-bar-bg"><div class="topic-bar" style="width:33%"></div></div>
+          <span class="topic-count">1</span>
+        </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">廣泛性焦慮症</span><span class="keyword">共病</span><span class="keyword">自閉症</span><span class="keyword">老年人</span><span class="keyword">社交媒體成癮</span><span class="keyword">醫療獲取</span></div></div>
+
+  <div class="clinic-banner">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank">
+      <span class="clinic-icon">📬</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy me a coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-ultra-550b-a55b</span>
+    <span><a href="https://github.com/u8901006/generalized-anxiety-disoder">GitHub</a> &middot; <a href="index.html">回首頁</a></span>
+  </footer>
+</div>
+</body>
+</html>
